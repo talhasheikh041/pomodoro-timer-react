@@ -149,8 +149,8 @@ body {
 
   #break-length,
   #session-length {
-    font-size: 1.5rem;
-    margin: 0 0.4em 0 0.4em;
+    font-size: 1.8rem;
+    margin: 0 0.7em 0 0.7em;
   }
 
   .options-btn {
@@ -170,7 +170,7 @@ body {
   }
 
   .timer-btn {
-    width: 80%;
+    width: 100%;
   }
 }
 
