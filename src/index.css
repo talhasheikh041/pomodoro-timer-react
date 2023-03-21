@@ -135,7 +135,6 @@ body {
 @media (max-width: 360px) {
   .pomodoro {
     padding: 2em 1em;
-    height: 100dvh;
   }
 
   .title {
@@ -155,8 +154,8 @@ body {
   }
 
   .options-btn {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 40px;
   }
 
   .timer-container {
@@ -165,10 +164,13 @@ body {
 
   .timer-btn-wrapper {
     flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   .timer-btn {
-    width: 150px;
+    width: 80%;
   }
 }
 
