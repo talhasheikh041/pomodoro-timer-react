@@ -132,7 +132,47 @@ body {
   margin-top: 1.5em;
 }
 
-@media (max-width: 422px) {
+@media (max-width: 360px) {
+  .pomodoro {
+    padding: 2em 1em;
+    height: 100dvh;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0.8em;
+  }
+
+  .options-wrapper {
+    flex-direction: column;
+    gap: 0.7em;
+  }
+
+  #break-length,
+  #session-length {
+    font-size: 1.5rem;
+    margin: 0 0.4em 0 0.4em;
+  }
+
+  .options-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .timer-container {
+    width: 100%;
+  }
+
+  .timer-btn-wrapper {
+    flex-direction: column;
+  }
+
+  .timer-btn {
+    width: 150px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 422px) {
   .title {
     font-size: 1.8rem;
   }
