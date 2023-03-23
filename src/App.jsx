@@ -9,7 +9,7 @@ function App() {
   const [isBreakPaused, setIsBreakPaused] = useState(false)
   const [sessionTimer, setSessionTimer] = useState(0)
   const [breakTimer, setBreakTimer] = useState(0)
-  const [reset, setReset] = useState(true)
+  const [reset, setReset] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isFirstTime, setisFirstTime] = useState(true)
   const [sessionCount, setSessionCount] = useState(0)
@@ -22,6 +22,23 @@ function App() {
 
   const breakMinutes = Math.floor(breakTimer / 60)
   const breakSeconds = breakTimer % 60
+
+  useEffect(() => {
+    if (isSessionStarted) {
+      const minutes =
+        sessionMinutes < 10 ? `0${sessionMinutes}:` : `${sessionMinutes}:`
+      const seconds =
+        sessionSeconds < 10 ? `0${sessionSeconds}` : `${sessionSeconds}`
+      document.title = "Session " + minutes + seconds
+    } else if (isBreakStarted) {
+      const minutes =
+        breakMinutes < 10 ? `0${breakMinutes}:` : `${breakMinutes}:`
+      const seconds = breakSeconds < 10 ? `0${breakSeconds}` : `${breakSeconds}`
+      document.title = "Break " + minutes + seconds
+    } else if (reset) {
+      document.title = "Pomodoro Timer"
+    }
+  }, [sessionTimer, breakTimer, reset])
 
   useEffect(() => setSessionCount((prev) => prev + 1), [isBreakStarted])
 
@@ -36,7 +53,7 @@ function App() {
 
   function BreakTimer() {
     let timer
-    if (isBreakStarted && breakTimer > 0 && !isBreakPaused) {
+    if (isBreakStarted && breakTimer >= 0 && !isBreakPaused) {
       timer = setTimeout(() => {
         setBreakTimer((prev) => prev - 1)
       }, 1000)
@@ -52,7 +69,7 @@ function App() {
 
   function SessionTimer() {
     let timer
-    if (isSessionStarted && sessionTimer > 0 && !isSessionPaused) {
+    if (isSessionStarted && sessionTimer >= 0 && !isSessionPaused) {
       timer = setTimeout(() => {
         setSessionTimer((prev) => prev - 1)
       }, 1000)
@@ -135,6 +152,8 @@ function App() {
   }
 
   function resetTimer() {
+    notificationSound.pause()
+    notificationSound.currentTime = 0
     setBreakLength(5)
     setSessionLength(25)
     setisFirstTime(true)

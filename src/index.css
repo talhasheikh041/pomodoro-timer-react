@@ -147,15 +147,34 @@ body {
     gap: 0.7em;
   }
 
+  .option-btn-wrapper {
+    display: flex;
+  }
+
   #break-length,
   #session-length {
-    font-size: 1.8rem;
-    margin: 0 0.7em 0 0.7em;
+    font-size: 1.6rem;
+    border-top: 1px solid #525252;
+    border-bottom: 1px solid #525252;
+    text-align: center;
+    margin: 0;
+    width: 45px;
   }
 
   .options-btn {
     width: 45px;
     height: 40px;
+    border-radius: 0;
+  }
+
+  #session-increment,
+  #break-increment {
+    border-radius: 8px 0 0 8px;
+  }
+
+  #session-decrement,
+  #break-decrement {
+    border-radius: 0 8px 8px 0;
   }
 
   .timer-container {
